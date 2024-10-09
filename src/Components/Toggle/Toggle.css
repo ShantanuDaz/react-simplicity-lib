@@ -1,0 +1,22 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: max-content;
+  padding: 2px;
+}
+.toggle-area {
+  display: flex;
+  width: 58px;
+  background-color: lightgray;
+  border-radius: 100000px;
+  padding: 5px;
+  transition: all 300ms;
+}
+.toggle-ball {
+  width: 24px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: grey;
+  transition: all 300ms;
+}
