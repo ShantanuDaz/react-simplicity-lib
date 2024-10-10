@@ -1,10 +1,14 @@
 import React from "react";
-import Toggle from "./Components/Toggle/Toggle";
+import ToggleDisplay from "./ComponentDisplay/ToggleDisplay/ToggleDisplay";
+import Header from "./Header";
 const App = () => {
   return (
-    <div>
-      <Toggle />
-    </div>
+    <>
+      <Header />
+      <main>
+        <ToggleDisplay />
+      </main>
+    </>
   );
 };
 
