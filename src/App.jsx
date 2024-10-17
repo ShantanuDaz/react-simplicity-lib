@@ -1,12 +1,14 @@
 import React from "react";
-import ToggleDisplay from "./ComponentDisplay/ToggleDisplay/ToggleDisplay";
+import DisplayComponents from "./ComponentDisplay/index";
+import Welcome from "./Welcome";
 import Header from "./Header";
 const App = () => {
   return (
     <>
       <Header />
       <main>
-        <ToggleDisplay />
+        <Welcome />
+        <DisplayComponents />
       </main>
     </>
   );

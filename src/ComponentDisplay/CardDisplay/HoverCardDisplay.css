@@ -1,0 +1,13 @@
+.card1 {
+  background-image: url("/kitten.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 10px;
+  height: 30vh;
+}

@@ -38,7 +38,6 @@ const ToggleDisplay = () => {
 
   return (
     <section id="toggle-displayName">
-      <h2>Toggle</h2>
       {toggleStates.map(({ state, ballColorOn }, index) => {
         return (
           <Toggle key={index} ballColorOn={ballColorOn} toggleState={state} />

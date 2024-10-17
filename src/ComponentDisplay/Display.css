@@ -1,0 +1,22 @@
+.component-warper {
+  height: 100%;
+  border: 1px solid lightgray;
+  display: grid;
+  gap: 5px;
+  grid-template-rows: max-content 1fr;
+  justify-items: center;
+  border-radius: 5px;
+  background-color: #cbdce169;
+}
+
+.component-warper > h3 {
+  border-bottom: 3px solid white;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.component-warper > div {
+  height: 100%;
+}
