@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import Toggle from "../../Components/Toggle/Toggle";
+import ToggleDoc from "./ToggleDoc";
 import "./ToggleDisplay.css";
+import Modal from "../../Components/Modal/Modal";
+import Button from "../../Components/Button/Button";
 
-const ToggleDisplay = () => {
+const ToggleDisplay = ({ isOpen = false, isClosed = () => {} }) => {
   const [toggleStates, setToggleStates] = useState([
     { state: false, ballColorOn: "pink" },
-    { state: false, ballColorOn: "blue" },
-    { state: false, ballColorOn: "violet" },
-    { state: false, ballColorOn: "yellow" },
+    { state: false, ballColorOn: "lightblue" },
+    { state: false, ballColorOn: "#bc76cb" },
+    { state: false, ballColorOn: "#82b091" },
   ]);
 
   useEffect(() => {
@@ -35,7 +38,35 @@ const ToggleDisplay = () => {
       }
     }
   }, [toggleStates]);
-
+  if (isOpen)
+    return (
+      <Modal isOpen={isOpen}>
+        <section className="component-doc">
+          <h3>
+            Toggle{" "}
+            <Button onClick={() => isClosed()} style={{ fontSize: "1.2rem" }}>
+              &#x2716;
+            </Button>
+          </h3>
+          <div>
+            <div id="toggle-displayName">
+              {toggleStates.map(({ state, ballColorOn }, index) => {
+                return (
+                  <Toggle
+                    key={index}
+                    ballColorOn={ballColorOn}
+                    toggleState={state}
+                  />
+                );
+              })}
+            </div>
+          </div>
+          <div>
+            <ToggleDoc />
+          </div>
+        </section>
+      </Modal>
+    );
   return (
     <section id="toggle-displayName">
       {toggleStates.map(({ state, ballColorOn }, index) => {

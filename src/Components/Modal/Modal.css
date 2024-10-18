@@ -1,0 +1,12 @@
+.Modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(211, 211, 211, 0.6);
+  z-index: 1000000px;
+}
+
+.modal-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

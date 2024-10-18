@@ -6,7 +6,9 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
+code {
+  font-family: monospace !important;
+}
 header {
   font-size: xx-large;
   border-bottom: 1px solid lightgray;
@@ -15,6 +17,12 @@ header {
   justify-content: center;
   padding: 10px;
   box-shadow: 0 0 10px lightgray;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+header img {
+  height: 32px;
 }
 main {
   display: grid;
@@ -28,6 +36,7 @@ main {
   height: 60vh;
   grid-column: 1 / span 3;
   display: grid;
+  gap: 5px;
   border-radius: 5px;
   place-content: center;
   place-items: center;
@@ -35,8 +44,51 @@ main {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  padding: 10px;
 }
 
 #welcome-section > p:nth-child(1) {
   font-size: 3vw;
+}
+
+#install-message {
+  opacity: 0;
+  animation: easeInTop 500ms ease-in 200ms forwards;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  gap: 5px;
+  margin-top: 10vh;
+}
+#install-message p {
+  background-color: #e3f4f9;
+  padding: 2px;
+  border-radius: 5px;
+}
+#install-message code {
+  border: 1px solid white;
+  background-color: lightgray;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  gap: 5px;
+}
+@keyframes easeInTop {
+  from {
+    translate: 0 -100%;
+    opacity: 0;
+  }
+  to {
+    translate: 0;
+    opacity: 1;
+  }
+}
+::-webkit-scrollbar {
+  width: 5px; /* Set the width of the scrollbar */
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: lightgray; /* Set the thumb color */
 }

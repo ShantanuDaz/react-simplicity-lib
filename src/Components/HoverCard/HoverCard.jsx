@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import "./HoverCard.css";
 
-const HoverCard = ({ children }) => {
+const HoverCard = ({ children, className = "", style = {} }) => {
   const cardRef = useRef(null); // To reference the card element
   const [bounds, setBounds] = useState(null);
   const [cardMove, setCardMove] = useState({
@@ -9,6 +9,7 @@ const HoverCard = ({ children }) => {
     rotationY: 0,
     rotationAngle: 0,
   });
+  const [scaleVal, setScaleVal] = useState(1);
   // Helper function to calculate distance
   const calculateDistance = (x, y) => Math.sqrt(x ** 2 + y ** 2);
 
@@ -47,8 +48,8 @@ const HoverCard = ({ children }) => {
       rotationY,
       rotationAngle,
     });
+    setScaleVal(1.07);
   };
-
   // Function to handle mouse enter (initialize bounds)
   const handleMouseEnter = () => {
     const cardBounds = cardRef.current.getBoundingClientRect();
@@ -59,15 +60,21 @@ const HoverCard = ({ children }) => {
   const handleMouseLeave = () => {
     cardRef.current.style.transform = "";
     cardRef.current.style.backgroundImage = "";
+    setScaleVal(1);
   };
 
   return (
     <div
       ref={cardRef}
-      className="hover-card"
+      className={`hover-card ${className}`}
       style={{
-        transform: ` scale3d(1.07, 1.07, 1.07)
-      rotate3d(${cardMove.rotationX}, ${cardMove.rotationY}, 0, ${cardMove.rotationAngle}deg)`,
+        transform:
+          scaleVal !== 1
+            ? ` scale3d(${scaleVal}, ${scaleVal}, ${scaleVal})
+      rotate3d(${cardMove.rotationX}, ${cardMove.rotationY}, 0, ${cardMove.rotationAngle}deg)`
+            : "none",
+        perspective: scaleVal !== 1 ? "1500px" : "none",
+        ...style,
       }}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}

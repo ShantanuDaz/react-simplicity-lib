@@ -1,0 +1,22 @@
+.table {
+  background-color: white;
+  font-size: 0.95rem;
+  border-spacing: 0;
+}
+
+.table > thead {
+  position: sticky;
+  top: 0px;
+  background-color: #cbdce1;
+}
+
+.table > tbody td,
+.table > thead th {
+  border: 1px solid lightgray;
+  padding: 5px;
+}
+
+.table > thead th {
+  border-color: white;
+  color: #6a7e90;
+}

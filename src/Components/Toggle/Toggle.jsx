@@ -11,6 +11,8 @@ const Toggle = ({
   backgroundColorOff = "lightgray",
   ballColorOn = "#348dfa",
   ballColorOff = "grey",
+  style = {},
+  className = "",
 }) => {
   const [isOn, setIsOn] = useState(toggleState);
   useEffect(() => {
@@ -23,7 +25,10 @@ const Toggle = ({
     else setIsOn(!isOn);
   };
   return (
-    <div className="toggle" style={{ "--ballSize": `${ballSize}px` }}>
+    <div
+      className={`toggle ${className}`}
+      style={{ "--ballSize": `${ballSize}px`, ...style }}
+    >
       <div
         className="toggle-area"
         onClick={() => handleState()}

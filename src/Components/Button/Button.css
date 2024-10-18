@@ -1,0 +1,28 @@
+.animated-button {
+  background-color: var(--color);
+  border: none;
+  color: black;
+  padding: 2px 5px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 300ms ease; /* Smooth transition */
+}
+
+.animated-button:hover {
+  transform: scale(1.01);
+}
+
+.animated-button:active {
+  transform: scale(0.95);
+}
+
+.animated-button:focus {
+  outline: none;
+}
+
+.animated-button:disabled {
+  background-color: #d3d3d3; /* Light grey background when disabled */
+  cursor: not-allowed; /* Not-allowed cursor */
+}
