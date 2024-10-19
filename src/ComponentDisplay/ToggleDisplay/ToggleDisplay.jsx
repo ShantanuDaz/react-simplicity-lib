@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import Toggle from "../../Components/Toggle/Toggle";
 import ToggleDoc from "./ToggleDoc";
 import "./ToggleDisplay.css";
-import Modal from "../../Components/Modal/Modal";
-import Button from "../../Components/Button/Button";
+import {
+  DocTemplate,
+  DocComponentDisplay,
+  DocComponentDocumentation,
+  DocHeader,
+} from "../DocTemplate";
 
 const ToggleDisplay = ({ isOpen = false, isClosed = () => {} }) => {
   const [toggleStates, setToggleStates] = useState([
@@ -38,35 +42,7 @@ const ToggleDisplay = ({ isOpen = false, isClosed = () => {} }) => {
       }
     }
   }, [toggleStates]);
-  if (isOpen)
-    return (
-      <Modal isOpen={isOpen}>
-        <section className="component-doc">
-          <h3>
-            Toggle{" "}
-            <Button onClick={() => isClosed()} style={{ fontSize: "1.2rem" }}>
-              &#x2716;
-            </Button>
-          </h3>
-          <div>
-            <div id="toggle-displayName">
-              {toggleStates.map(({ state, ballColorOn }, index) => {
-                return (
-                  <Toggle
-                    key={index}
-                    ballColorOn={ballColorOn}
-                    toggleState={state}
-                  />
-                );
-              })}
-            </div>
-          </div>
-          <div>
-            <ToggleDoc />
-          </div>
-        </section>
-      </Modal>
-    );
+
   return (
     <section id="toggle-displayName">
       {toggleStates.map(({ state, ballColorOn }, index) => {
@@ -74,6 +50,15 @@ const ToggleDisplay = ({ isOpen = false, isClosed = () => {} }) => {
           <Toggle key={index} ballColorOn={ballColorOn} toggleState={state} />
         );
       })}
+      <DocTemplate isOpen={isOpen}>
+        <DocHeader title="Toggle" onClick={() => isClosed()} />
+        <DocComponentDisplay>
+          <ToggleDisplay />
+        </DocComponentDisplay>
+        <DocComponentDocumentation>
+          <ToggleDoc />
+        </DocComponentDocumentation>
+      </DocTemplate>
     </section>
   );
 };

@@ -9,7 +9,7 @@ const Components = [
     Component: ToggleDisplay,
   },
   {
-    title: "Hover Card",
+    title: "3D Card",
     Component: HoverCardDisplay,
   },
   {

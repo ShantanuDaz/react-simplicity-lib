@@ -15,20 +15,18 @@ const Welcome = () => {
   };
   return (
     <section id="welcome-section">
-      <p>
-        <TypeWriter
-          text="<Hi Developers/>"
-          onEffectComplete={() => setIsCompleteHeading(true)}
-        />
-      </p>
-      <p>
-        <TypeWriter
-          text="I have created this library to help you guys to create UI with simple and
+      <TypeWriter
+        text="<Hi Developers/>"
+        onEffectComplete={() => setIsCompleteHeading(true)}
+      />
+
+      <TypeWriter
+        text="I have created this library to help you guys to create UI with simple and
         minimalistic code."
-          baseSpeed={200}
-          onEffectComplete={() => setIsCompleteMessage(true)}
-        />
-      </p>
+        baseSpeed={200}
+        onEffectComplete={() => setIsCompleteMessage(true)}
+      />
+
       {isCompleteHeading && isCompleteMessage && (
         <>
           <div id="install-message">
