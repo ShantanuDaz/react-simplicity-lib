@@ -11,10 +11,10 @@ import {
 
 const ToggleDisplay = ({ isOpen = false, isClosed = () => {} }) => {
   const [toggleStates, setToggleStates] = useState([
-    { state: false, ballColorOn: "pink" },
     { state: false, ballColorOn: "lightblue" },
-    { state: false, ballColorOn: "#bc76cb" },
-    { state: false, ballColorOn: "#82b091" },
+    { state: false, ballColorOn: "pink" },
+    { state: false, ballColorOn: "#ffe0b2" },
+    { state: false, ballColorOn: "#95B697" },
   ]);
 
   useEffect(() => {
@@ -53,6 +53,12 @@ const ToggleDisplay = ({ isOpen = false, isClosed = () => {} }) => {
       <DocTemplate isOpen={isOpen}>
         <DocHeader title="Toggle" onClick={() => isClosed()} />
         <DocComponentDisplay>
+          <Toggle
+            ballColorOn="#e57373"
+            style={{ margin: "10px auto" }}
+            labelOff="Switch Off!"
+            labelOn="Switch On💡"
+          />
           <ToggleDisplay />
         </DocComponentDisplay>
         <DocComponentDocumentation>
