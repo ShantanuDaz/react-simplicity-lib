@@ -40,6 +40,7 @@
   height: 90vh;
   padding: 10px;
   border-radius: 10px;
+  overflow: auto;
 }
 
 .component-doc > h3 {
@@ -83,3 +84,22 @@
 /* .doc-props {
   
 } */
+
+/* Mobile styles (max-width: 767px) */
+@media (max-width: 767px) {
+  .component-doc {
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content max-content 80vh;
+  }
+  .component-doc > h3 {
+    grid-column: 1;
+  }
+  .component-doc > div:nth-child(2) {
+    border-right: none;
+    border-bottom: 1px solid lightgray;
+  }
+}
+
+/* Tablet styles (min-width: 768px and max-width: 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+}
