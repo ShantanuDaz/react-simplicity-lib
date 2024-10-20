@@ -4,7 +4,7 @@ import "./Button.css"; // Import the CSS file for styles
 const Button = ({
   children,
   onClick,
-  color = "white",
+  buttonColor = "lightblue",
   style = {},
   className = "",
 }) => {
@@ -12,7 +12,7 @@ const Button = ({
     <button
       className={`animated-button ${className}`}
       onClick={onClick}
-      style={{ "--color": color, ...style }}
+      style={{ "--color": buttonColor, ...style }}
     >
       {children}
     </button>

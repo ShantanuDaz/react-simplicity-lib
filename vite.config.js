@@ -1,22 +1,16 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import { terser } from "rollup-plugin-terser";
 import path from "path";
-
+import { libInjectCss } from "vite-plugin-lib-inject-css";
 export default defineConfig(({ mode }) => ({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    open: true,
-  },
+  plugins: [react(), libInjectCss()],
   build:
     mode === "library"
       ? {
           lib: {
-            entry: path.resolve(__dirname, "src/index.jsx"),
-            name: "MyComponentLibrary",
-            fileName: (format) => `my-component-library.${format}.js`,
+            entry: path.resolve(__dirname, "src/index.js"),
+            name: "react-simplicity-lib",
+            fileName: (format) => `react-simplicity-lib.${format}.js`,
           },
           rollupOptions: {
             external: ["react", "react-dom"],
@@ -26,8 +20,9 @@ export default defineConfig(({ mode }) => ({
                 "react-dom": "ReactDOM",
               },
             },
-            plugins: [peerDepsExternal(), terser()],
           },
+          sourcemap: true,
+          emptyOutDir: true,
         }
       : {
           outDir: "dist", // For the website build

@@ -1,9 +1,11 @@
 .animated-button {
-  background-color: var(--color);
-  border: none;
+  background-color: white;
+  box-shadow: 3px 3px 10px 1px var(--color), inset 0 0 5px var(--color);
+  border: 1px solid var(--color);
   color: black;
-  padding: 2px 5px;
+  padding: 5px 10px;
   display: inline-block;
+  font-size: 1rem;
   text-align: center;
   cursor: pointer;
   border-radius: 5px;
