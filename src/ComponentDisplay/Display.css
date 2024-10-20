@@ -97,6 +97,8 @@
   .component-doc > div:nth-child(2) {
     border-right: none;
     border-bottom: 1px solid lightgray;
+    height: max-content;
+    padding: 10px 5px;
   }
 }
 
