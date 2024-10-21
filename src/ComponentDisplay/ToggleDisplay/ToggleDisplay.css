@@ -1,7 +1,0 @@
-#toggle-displayName {
-  display: grid;
-  place-content: center;
-  place-items: center;
-  gap: 10px;
-  height: 100%;
-}

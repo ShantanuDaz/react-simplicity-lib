@@ -38,11 +38,4 @@ const Tabs = ({
   );
 };
 
-const Tab = ({ children, style = {}, className = "" }) => {
-  return (
-    <section className={`Tab ${className}`} style={style}>
-      {children}
-    </section>
-  );
-};
-export { Tabs, Tab };
+export default Tabs;

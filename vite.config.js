@@ -4,6 +4,10 @@ import path from "path";
 import { libInjectCss } from "vite-plugin-lib-inject-css";
 export default defineConfig(({ mode }) => ({
   plugins: [react(), libInjectCss()],
+  server: {
+    port: 3000,
+    open: true,
+  },
   build:
     mode === "library"
       ? {
