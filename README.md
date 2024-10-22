@@ -55,9 +55,9 @@ Each component in the library includes detailed prop documentation. Check out th
 
 Feel free to submit issues or pull requests on [GitHub](https://github.com/ShantanuDaz/react-simplicity-lib). Contributions are welcome!
 
-## **License**
+<!-- ## **License**
 
-This library is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+This library is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details. -->
 
 ## **Author**
 
