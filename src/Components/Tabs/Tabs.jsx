@@ -1,4 +1,4 @@
-import { Children, useState } from "react";
+import { Children, useEffect, useState } from "react";
 import "./Tabs.css";
 
 const Tabs = ({
@@ -7,8 +7,19 @@ const Tabs = ({
   color = "#cbdce1",
   style = {},
   className = "",
+  onTabChange = () => {},
+  value = 0,
+  isNativeMomentDisable = false,
 }) => {
-  const [currentTab, setCurrentTab] = useState(0);
+  const [currentTab, setCurrentTab] = useState(value);
+  useEffect(() => {
+    setCurrentTab(value);
+  }, [value]);
+  const handleChange = (index) => {
+    if (isNativeMomentDisable) return;
+    setCurrentTab(index);
+    onTabChange(index);
+  };
   return (
     <section
       className={`Tabs ${className}`}
@@ -19,7 +30,7 @@ const Tabs = ({
           return (
             <span
               key={index}
-              onClick={() => setCurrentTab(index)}
+              onClick={() => handleChange(index)}
               className={`Tab-name ${currentTab === index ? "active-tab" : ""}`}
             >
               {tab}

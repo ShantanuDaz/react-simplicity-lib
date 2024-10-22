@@ -3,6 +3,7 @@
   display: grid;
   grid-template-rows: max-content 1fr;
   padding: 5px;
+  background-color: white;
 }
 .Tabs-names {
   display: flex;

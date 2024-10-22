@@ -8,27 +8,22 @@ export default defineConfig(({ mode }) => ({
     port: 3000,
     open: true,
   },
-  build:
-    mode === "library"
-      ? {
-          lib: {
-            entry: path.resolve(__dirname, "src/index.js"),
-            name: "react-simplicity-lib",
-            fileName: (format) => `react-simplicity-lib.${format}.js`,
-          },
-          rollupOptions: {
-            external: ["react", "react-dom"],
-            output: {
-              globals: {
-                react: "React",
-                "react-dom": "ReactDOM",
-              },
-            },
-          },
-          sourcemap: true,
-          emptyOutDir: true,
-        }
-      : {
-          outDir: "dist", // For the website build
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, "src/index.js"),
+      name: "react-simplicity-lib",
+      fileName: (format) => `react-simplicity-lib.${format}.js`,
+    },
+    rollupOptions: {
+      external: ["react", "react-dom"],
+      output: {
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
         },
+      },
+    },
+    sourcemap: true,
+    emptyOutDir: true,
+  },
 }));
