@@ -1,62 +1,48 @@
 import { useState } from "react";
 import "./Table.css";
+
 const Table = ({
-  columns = [
-    {
-      name: "",
-      field: "",
-    },
-  ],
-  rows = [
-    {
-      columnName: "value",
-    },
-  ],
+  columns = [{ name: "", field: "" }],
+  rows = [{ columnName: "value" }],
   className = "",
   style = {},
   isPagination = false,
   pageSize = 10,
-  pageMenuPlacement = "center" || "start",
+  pageMenuPlacement = "center",
   isSerialized = false,
 }) => {
-  const pageSizeIndex = pageSize - 1;
-  const [pagination, setPagination] = useState([0, pageSizeIndex]);
+  const [pagination, setPagination] = useState([0, pageSize - 1]);
 
   const handlePagination = (direction) => {
-    if (direction === "next") {
-      setPagination([pagination[0] + pageSize, pagination[1] + pageSize]);
-    } else {
-      setPagination([pagination[0] - pageSize, pagination[1] - pageSize]);
+    const [start, end] = pagination;
+    if (direction === "next" && end < rows.length - 1) {
+      setPagination([start + pageSize, end + pageSize]);
+    } else if (direction === "previous" && start > 0) {
+      setPagination([start - pageSize, end - pageSize]);
     }
   };
+
   return (
     <div className={`simplicity-table ${className}`} style={style}>
       <div className="simplicity-table-container">
         <table>
           <thead>
             <tr>
-              {isSerialized && <th>S.no</th>}
-              {columns.map((column, index) => {
-                return <th key={index}>{column.name}</th>;
-              })}
+              {isSerialized && <th>S.No</th>}
+              {columns.map((column, index) => (
+                <th key={index}>{column.name}</th>
+              ))}
             </tr>
           </thead>
           <tbody>
-            {rows.map((row, index) => {
-              return (
-                index >= pagination[0] &&
-                index <= pagination[1] && (
-                  <tr key={index}>
-                    {isSerialized && <td>{index + 1}</td>}
-                    {columns.map((column, index) => {
-                      return (
-                        <td key={index}>{row[column.field || column.name]}</td>
-                      );
-                    })}
-                  </tr>
-                )
-              );
-            })}
+            {rows.slice(pagination[0], pagination[1] + 1).map((row, index) => (
+              <tr key={index}>
+                {isSerialized && <td>{pagination[0] + index + 1}</td>}
+                {columns.map((column, colIndex) => (
+                  <td key={colIndex}>{row[column.field || column.name]}</td>
+                ))}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -66,36 +52,32 @@ const Table = ({
           style={{ justifyContent: pageMenuPlacement }}
         >
           <button
-            onClick={() =>
-              pagination[0] !== 0 && setPagination([0, pageSizeIndex])
-            }
+            onClick={() => setPagination([0, pageSize - 1])}
             disabled={pagination[0] === 0}
           >
             {"<<"}
           </button>
           <button
-            onClick={() => pagination[0] !== 0 && handlePagination("previous")}
+            onClick={() => handlePagination("previous")}
             disabled={pagination[0] === 0}
           >
             {"<"}
           </button>
           <p>
-            {pagination[0] + 1} - {pagination[1] + 1} of {rows.length}
+            {pagination[0] + 1} - {Math.min(pagination[1] + 1, rows.length)} of{" "}
+            {rows.length}
           </p>
           <button
-            onClick={() =>
-              pagination[1] < rows.length - 1 && handlePagination("next")
-            }
-            disabled={pagination[1] === rows.length - 1}
+            onClick={() => handlePagination("next")}
+            disabled={pagination[1] >= rows.length - 1}
           >
             {">"}
           </button>
           <button
             onClick={() =>
-              pagination[1] < rows.length - 1 &&
               setPagination([rows.length - pageSize, rows.length - 1])
             }
-            disabled={pagination[1] === rows.length - 1}
+            disabled={pagination[1] >= rows.length - 1}
           >
             {">>"}
           </button>

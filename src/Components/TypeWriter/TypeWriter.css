@@ -6,8 +6,8 @@
 }
 .type-writer::after {
   content: "";
-  position: absolute;
-  right: 0;
+  /* position: absolute;
+  right: 0; */
   border-right: 1px solid black;
   height: 100%;
   animation: blink-caret 1s step-end infinite;
