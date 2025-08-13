@@ -18,7 +18,10 @@
     }
   },
   "files": [
-    "/dist"
+    "/dist/react-simplicity-lib.es.js",
+    "/dist/react-simplicity-lib.umd.js",
+    "/dist/index.css",
+    "/dist/*.map"
   ],
   "publishConfig": {
     "access": "public"
