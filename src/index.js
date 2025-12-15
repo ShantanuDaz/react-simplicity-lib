@@ -6,3 +6,4 @@ export { default as Modal } from "./Components/Modal/Modal";
 export { default as Table } from "./Components/Table/Table";
 export { default as Tabs } from "./Components/Tabs/Tabs";
 export { default as Tab } from "./Components/Tabs/Tab";
+export { default as Calender } from "./Components/Calender/Calender";

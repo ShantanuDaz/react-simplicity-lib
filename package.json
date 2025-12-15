@@ -12,9 +12,9 @@
   "module": "dist/react-simplicity-lib.es.js",
   "exports": {
     ".": {
+      "styles": "./dist/style.css",
       "import": "./dist/react-simplicity-lib.es.js",
-      "require": "./dist/react-simplicity-lib.umd.js",
-      "styles": "./dist/style.css"
+      "require": "./dist/react-simplicity-lib.umd.js"
     }
   },
   "files": [
@@ -56,5 +56,9 @@
     "react-ui-kit",
     "frontend",
     "open-source"
-  ]
+  ],
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "tailwindcss": "^4.1.18"
+  }
 }
